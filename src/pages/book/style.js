@@ -21,6 +21,6 @@ export const TopWrap = styled.div`
 export const MainWrap = styled.section`
   padding: 20px;
   img {
-    height: 30px;
+    height: 40px;
   }
 `

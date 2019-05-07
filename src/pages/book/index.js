@@ -3,6 +3,7 @@ import React from 'react'
 import BookUI from './ui'
 import { inputChange, getBookListAction, searchBookAction, pageClickAction } from './store/createActions';
 import store from '@/store'
+import { Button } from 'antd'
 
 
 const mapStateToProps = (state) => {
@@ -13,32 +14,50 @@ const mapStateToProps = (state) => {
       title: '图书编号',
       key: '图书编号',
       dataIndex: 'id'
-    },{
+    }, {
       title: '图书名',
       key: '图书名',
       dataIndex: 'bookName'
-    },{
+    }, {
       title: '作者',
       key: '作者',
       dataIndex: 'author'
-    },{
+    }, {
       title: '价格',
       key: '价格',
       dataIndex: 'price'
-    },{
+    }, {
       title: '上架时间',
       key: '上架时间',
       dataIndex: 'updatedate'
-    },{
+    }, {
       title: '海报',
       key: '海报',
       dataIndex: 'coverurl',
       render: (text, record, index) => {
         return <img src={text} alt="" />
       }
-    },{
+    }, {
       title: '操作',
       key: '操作',
+      render: () => {
+        return (
+          <>
+            <Button style={{backgroundColor:'#329900',color:'#fff',marginRight:'2px'}}>
+              <i></i>
+              <span>查看</span>
+            </Button>
+            <Button style={{backgroundColor:'#ffa500',color:'#fff',marginRight:'2px'}}>
+              <i></i>
+              <span>编辑</span>
+            </Button>
+            <Button style={{backgroundColor:'#b32222',color:'#fff',marginRight:'2px'}}>
+              <i></i>
+              <span>删除</span>
+            </Button>
+          </>
+        )
+      }
     }],
     pagination: {
       total: state.book.total,
@@ -53,7 +72,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onInputChange: (e) => {
-      let value =e.target.value;
+      let value = e.target.value;
       dispatch(inputChange(value));
     },
     searchBtnClick: () => {
