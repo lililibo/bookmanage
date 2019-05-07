@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import Sider from './common/components/Sider';
 import Header from './common/components/Header';
 import BookPage from './pages/book';
+import AddBook from './pages/add';
 import PrivateRoute from '@/common/privateRoute'
 
 class App extends Component {
@@ -18,6 +19,8 @@ class App extends Component {
                   {/* 1. 图书管理 localhost:3000/ */}
                 <Switch>
                   <Route path="/book" exact component={BookPage} ></Route>
+                  <Route path="/add" exact component={AddBook} ></Route>
+                  <Redirect to="/book"></Redirect>
                 </Switch>
               </Layout.Content>
             </Layout>

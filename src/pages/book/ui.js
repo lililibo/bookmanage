@@ -1,6 +1,7 @@
 import React from 'react';
 import { BookWrap, TopWrap, MainWrap } from './style';
 import { Input, Table, Button } from 'antd';
+// import http from '@/utils/http'
 
 class BookUI extends React.Component {
   render () {
@@ -32,6 +33,9 @@ class BookUI extends React.Component {
 
   componentDidMount () {
     this.props.getBookList();
+    // http.get('/json/book.json', {}).then(res => {
+    //   console.log(res)
+    // })
   }
 }
 

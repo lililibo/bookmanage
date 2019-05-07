@@ -1,7 +1,7 @@
 const defaultState = {
   menus: [
     { id: 1, name: '图书管理', icon: 'book', href: '/book' },
-    { id: 2, name: '用户管理', icon: 'user', href: '/user' }
+    { id: 2, name: '新增图书', icon: 'folder-add', href: '/add' }
   ],
   defaultMenus: ['1'],
   isLogin: false
