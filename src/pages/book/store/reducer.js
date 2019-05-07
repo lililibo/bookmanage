@@ -3,8 +3,8 @@ const defaultState = {
   list: [],
   pageNum: 1,
   inputVal: '',
-  pageSize: 1,
-  total: 1,
+  pageSize: 10,
+  total: 22,
 }
 
 export default (state = defaultState, action) => {
@@ -16,8 +16,8 @@ export default (state = defaultState, action) => {
       break;
       
     case SETBOOKDATA:
-      newState.list = action.data.list;
-      newState.total = action.data.total;
+      newState.list = action.data;
+      // newState.total = action.data.total;
       break;
 
     case SETPAGENUM:

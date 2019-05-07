@@ -23,7 +23,7 @@ class BookUI extends React.Component {
           <Table 
           dataSource={ list } 
           columns={ columns }
-          rowKey="bookId"
+          rowKey="id"
           pagination={ pagination }
           ></Table>
         </MainWrap>

@@ -16,22 +16,28 @@ export const inputChange = (value) => {
  */
 export const getBookListAction = () => {
   return (dispatch, getState) => {
-    let { inputVal, pageNum, pageSize} = getState().book;
-    http.get('./api/book', {
-      params: {
-        bookName: inputVal,
-        pageNum,
-        pageSize
-      }
+    // let { inputVal, pageNum, pageSize} = getState().book;
+    // http.get('./api/book', {
+    //   params: {
+    //     bookName: inputVal,
+    //     pageNum,
+    //     pageSize
+    //   }
+    // })
+    //   .then(res => {
+    //     if (res.code === 0){
+    //       dispatch({
+    //         type: SETBOOKDATA,
+    //         data: res.data
+    //       })
+    //     }
+    //   })
+    http.get('/json/book.json', {}).then(res => {
+      dispatch({
+                type: SETBOOKDATA,
+                data: res
+              })
     })
-      .then(res => {
-        if (res.code === 0){
-          dispatch({
-            type: SETBOOKDATA,
-            data: res.data
-          })
-        }
-      })
   }
 }
 /**

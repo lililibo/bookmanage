@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
     list: state.book.list,
     columns: [{
       title: '图书编号',
-      key: 'bookId',
-      dataIndex: 'bookId'
+      key: '图书编号',
+      dataIndex: 'id'
     },{
       title: '图书名',
       key: '图书名',
