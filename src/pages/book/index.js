@@ -26,11 +26,24 @@ const mapStateToProps = (state) => {
     }, {
       title: '价格',
       key: '价格',
-      dataIndex: 'price'
+      dataIndex: 'price',
+      sorter: (a, b) => a.price - b.price
     }, {
       title: '上架时间',
       key: '上架时间',
-      dataIndex: 'updatedate'
+      dataIndex: 'updatedate',
+      filters: [{
+        text: '2019-05',
+        value: '2019-05',
+      }, {
+        text: '2019-04',
+        value: '2019-04',
+      },{
+        text: '2019-03',
+        value: '2019-03',
+      }],
+      filterMultiple: false,
+      onFilter: (value, record) => record.updatedate.substr(6,1)===value.substr(6,1)
     }, {
       title: '海报',
       key: '海报',

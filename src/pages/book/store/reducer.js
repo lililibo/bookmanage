@@ -4,7 +4,6 @@ const defaultState = {
   pageNum: 1,
   inputVal: '',
   pageSize: 10,
-  total: 22,
 }
 
 export default (state = defaultState, action) => {
