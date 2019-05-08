@@ -116,22 +116,22 @@ class Seenbutton extends React.Component {
     )
   }
   showModal = (e) => {
-    var e = e.target.parentNode.parentNode.parentNode;
+    var el = e.target.parentNode.parentNode.parentNode;
     this.setState({
       visible: true,
-      id: e.children[0].innerText,
-      bookName: e.children[1].innerText,
-      author: e.children[2].innerText,
-      price: e.children[3].innerText,
-      updatedate: e.children[4].innerText
+      id: el.children[0].innerText,
+      bookName: el.children[1].innerText,
+      author: el.children[2].innerText,
+      price: el.children[3].innerText,
+      updatedate: el.children[4].innerText
     });
   }
-  handleOk = (e) => {
+  handleOk = () => {
     this.setState({
       visible: false,
     });
   }
-  handleCancel = (e) => {
+  handleCancel = () => {
     this.setState({
       visible: false,
     });
