@@ -1,4 +1,4 @@
-import { INPUTVALCHANGE, SETBOOKDATA, SETPAGENUM, } from './actionTypes';
+import { INPUTVALCHANGE, SETBOOKDATA, SETPAGENUM, SEARCHBOOK} from './actionTypes';
 import http from '@/utils/http';
 
 /**
@@ -15,7 +15,8 @@ export const inputChange = (value) => {
  * 创建 获取图书 的动作
  */
 export const getBookListAction = () => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
+   
     // let { inputVal, pageNum, pageSize} = getState().book;
     // http.get('./api/book', {
     //   params: {
@@ -44,12 +45,18 @@ export const getBookListAction = () => {
  * 创建 搜索的动作
  */
 export const searchBookAction = () => {
-  return (dispatch) => {
-    dispatch({
-      type: SETPAGENUM,
-      value: 1
-    })
-    dispatch(getBookListAction());
+  return (dispatch, getState) => {
+    let { inputVal} = getState().book;
+    if(inputVal){
+      dispatch({
+        type: SEARCHBOOK,
+        value: inputVal
+      })
+    }else{
+      dispatch(getBookListAction());
+    }
+    
+    
   }
 }
 /**
