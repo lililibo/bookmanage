@@ -3,7 +3,7 @@ import React from 'react'
 import BookUI from './ui'
 import { inputChange, getBookListAction, searchBookAction, pageClickAction } from './store/createActions';
 import store from '@/store'
-import { Button } from 'antd'
+import { Button, Modal } from 'antd'
 
 
 const mapStateToProps = (state) => {
@@ -42,20 +42,10 @@ const mapStateToProps = (state) => {
       key: '操作',
       render: () => {
         return (
-          <>
-            <Button style={{backgroundColor:'#329900',color:'#fff',marginRight:'2px'}}>
-              <i></i>
-              <span>查看</span>
-            </Button>
-            <Button style={{backgroundColor:'#ffa500',color:'#fff',marginRight:'2px'}}>
-              <i></i>
-              <span>编辑</span>
-            </Button>
-            <Button style={{backgroundColor:'#b32222',color:'#fff',marginRight:'2px'}}>
-              <i></i>
-              <span>删除</span>
-            </Button>
-          </>
+          <div>
+            <Seenbutton></Seenbutton>
+            {/* <Editbutton></Editbutton> */}
+          </div>
         )
       }
     }],
@@ -81,6 +71,69 @@ const mapDispatchToProps = (dispatch) => {
     getBookList: () => {
       dispatch(getBookListAction())
     }
+  }
+}
+
+
+class Seenbutton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      id: '',
+      bookName: '',
+      author: '',
+      price: '',
+      updatedate: ''
+    }
+  }
+  render() {
+    return (
+      <>
+        <Button
+          className='see'
+          style={{ backgroundColor: '#329900', color: '#fff', marginRight: '2px' }}
+          onClick={this.showModal}>
+          查看
+        </Button>
+        <Modal
+          title="图书详情"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+          footer={null}
+          centered={true}
+        >
+          <p>图书编号:{this.state.id}</p>
+          <p>图书名称:{this.state.bookName}</p>
+          <p>作者：{this.state.author}</p>
+          <p>价格：{this.state.price}</p>
+          <p>上架时间：{this.state.updatedate}</p>
+        </Modal>
+      </>
+    )
+  }
+  showModal = (e) => {
+    console.log(e.target.parentNode.parentNode.parentNode)
+    var e = e.target.parentNode.parentNode.parentNode;
+    this.setState({
+      visible: true,
+      id: e.children[0].innerText,
+      bookName: e.children[1].innerText,
+      author: e.children[2].innerText,
+      price: e.children[3].innerText,
+      updatedate: e.children[4].innerText
+    });
+  }
+  handleOk = (e) => {
+    this.setState({
+      visible: false,
+    });
+  }
+  handleCancel = (e) => {
+    this.setState({
+      visible: false,
+    });
   }
 }
 
