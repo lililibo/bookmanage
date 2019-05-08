@@ -150,11 +150,15 @@ class Edit extends React.Component {
       bookName: '',
       author: '',
       price: '',
-      updatedate: ''
+      updatedate: '',
+      inputVal1: '',
+      inputVal2: '',
+      inputVal3: '',
+      inputVal4: ''
     }
   }
   render() {
-    const { visible, loading, bookName, author, price, updatedate } = this.state;
+    const { visible, loading, bookName, author, price, updatedate, inputVal1, inputVal2, inputVal3, inputVal4 } = this.state;
     return (
       <>
         <Button
@@ -175,15 +179,10 @@ class Edit extends React.Component {
             </Button>,
           ]}
         >
-          
-          图书名称 : <input style={{ marginBottom: '5px'}} placeholder={bookName}></input><br />
-          作者 : <input style={{ marginBottom: '5px'}} placeholder={author}></input><br />
-          价格 : <input style={{ marginBottom: '5px'}} placeholder={price}></input><br />
-          上架时间 : <input placeholder={updatedate}></input><br />
-          {/* <Input>图书名称:{this.state.bookName}</Input>{this.state.id}
-          <Input>作者：{this.state.author}</Input>
-          <Input>价格：{this.state.price}</Input>
-          <Input>上架时间：{this.state.updatedate}</Input> */}
+          图书名称 : <input value={inputVal1} style={{ marginBottom: '5px'}} placeholder={bookName}></input><br />
+          作者 : <input value={inputVal2} style={{ marginBottom: '5px'}} placeholder={author}></input><br />
+          价格 : <input value={inputVal3} style={{ marginBottom: '5px'}} placeholder={price}></input><br />
+          上架时间 : <input value={inputVal4} placeholder={updatedate}></input><br />
         </Modal>
       </>
     )
