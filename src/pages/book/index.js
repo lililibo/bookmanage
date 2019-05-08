@@ -3,7 +3,6 @@ import React from 'react'
 import BookUI from './ui'
 import { inputChange, getBookListAction, searchBookAction, pageClickAction } from './store/createActions';
 import store from '@/store'
-import { Button, Modal } from 'antd'
 import Seenbutton from './Seenbutton'
 import Delbutton from './Delbutton'
 
