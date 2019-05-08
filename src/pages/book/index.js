@@ -4,6 +4,7 @@ import BookUI from './ui'
 import { inputChange, getBookListAction, searchBookAction, pageClickAction } from './store/createActions';
 import store from '@/store'
 import { Button, Modal } from 'antd'
+import Delbutton from './Delbutton'
 
 
 const mapStateToProps = (state) => {
@@ -45,6 +46,7 @@ const mapStateToProps = (state) => {
           <div>
             <Seenbutton></Seenbutton>
             {/* <Editbutton></Editbutton> */}
+            <Delbutton></Delbutton>
           </div>
         )
       }
@@ -74,7 +76,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
+// 查看按钮
 class Seenbutton extends React.Component {
   constructor(props) {
     super(props);
@@ -114,7 +116,6 @@ class Seenbutton extends React.Component {
     )
   }
   showModal = (e) => {
-    console.log(e.target.parentNode.parentNode.parentNode)
     var e = e.target.parentNode.parentNode.parentNode;
     this.setState({
       visible: true,

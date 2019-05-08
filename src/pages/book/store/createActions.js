@@ -1,4 +1,4 @@
-import { INPUTVALCHANGE, SETBOOKDATA, SETPAGENUM, SEARCHBOOK} from './actionTypes';
+import { INPUTVALCHANGE, SETBOOKDATA, SETPAGENUM, SEARCHBOOK, DELBOOK } from './actionTypes';
 import http from '@/utils/http';
 
 /**
@@ -16,7 +16,7 @@ export const inputChange = (value) => {
  */
 export const getBookListAction = () => {
   return (dispatch) => {
-   
+
     // let { inputVal, pageNum, pageSize} = getState().book;
     // http.get('./api/book', {
     //   params: {
@@ -35,9 +35,9 @@ export const getBookListAction = () => {
     //   })
     http.get('/json/book.json', {}).then(res => {
       dispatch({
-                type: SETBOOKDATA,
-                data: res
-              })
+        type: SETBOOKDATA,
+        data: res
+      })
     })
   }
 }
@@ -46,17 +46,17 @@ export const getBookListAction = () => {
  */
 export const searchBookAction = () => {
   return (dispatch, getState) => {
-    let { inputVal} = getState().book;
-    if(inputVal){
+    let { inputVal } = getState().book;
+    if (inputVal) {
       dispatch({
         type: SEARCHBOOK,
         value: inputVal
       })
-    }else{
+    } else {
       dispatch(getBookListAction());
     }
-    
-    
+
+
   }
 }
 /**
@@ -70,5 +70,18 @@ export const pageClickAction = (page) => {
       value: page
     })
     dispatch(getBookListAction());
+  }
+}
+
+// 删除图书的操作
+export const delBookAction = (delId) => {
+  return (dispatch) => {
+    http.get('/json/book.json', {}).then(res => {
+      dispatch({
+        type: DELBOOK,
+        data: res,
+        delId: delId
+      })
+    })
   }
 }
